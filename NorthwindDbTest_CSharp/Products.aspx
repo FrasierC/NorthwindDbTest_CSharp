@@ -18,12 +18,12 @@
                             </div>
                             <div class="d-flex flex-wrap justify-content-end" style="grid-column-gap: 1rem;">
                                 <div class="form-check mr-3 align-self-center">
-                                    <asp:CheckBox ID="chkAvailableOnly" runat="server" Checked="false" Text="Show only available products" />
+                                    <asp:CheckBox ID="chkAvailableOnly" runat="server" Checked="false" OnCheckedChanged="products_filter" AutoPostBack="true" Text="Show only available products" />
                                 </div>
                                 <div>
                                     <div class="input-group">
                                         <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search by product name..."></asp:TextBox>
-                                        <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-secondary">
+                                        <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-secondary" OnClick="products_filter">
                                             <i class="bi bi-search"></i>
                                         </asp:LinkButton>
                                     </div>

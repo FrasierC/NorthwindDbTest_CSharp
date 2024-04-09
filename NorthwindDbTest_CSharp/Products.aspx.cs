@@ -24,17 +24,16 @@ namespace NorthwindDbTest_CSharp
         /// </summary>
         private void LoadProducts()
         {
-            using (ProductsRepository productRepo = new ProductsRepository())
+
+            var products = GetProducts();
+
+            if (products != null)
             {
                 ProductViewModelService productViewModelService = new ProductViewModelService();
-                IEnumerable<Product> products = productRepo.GetAll();
-
-                if (products != null)
-                {
-                    gvProducts.DataSource = productViewModelService.CreateViewModel(products).OrderBy(x => x.Name);
-                    gvProducts.DataBind();
-                }
+                gvProducts.DataSource = productViewModelService.CreateViewModel(products).OrderBy(x => x.Name);
+                gvProducts.DataBind();
             }
+
         }
 
         protected void gvProducts_PreRender(object sender, EventArgs e)
@@ -59,8 +58,40 @@ namespace NorthwindDbTest_CSharp
         protected void gvProducts_DataBound(object sender, EventArgs e)
         {
             GridView gv = (GridView)sender;
+            using (ProductsRepository productRepo = new ProductsRepository())
+            {
+                var allCount = productRepo.AllCount();
+                var msg = "";
+                if(gv.Rows.Count > 0)
+                {
+                    msg = $"Showing 1 to {gv.Rows.Count} of {allCount} entries";
+                }
+                else
+                {
+                    msg = $"Showing 0 of {allCount} entries";
+                }
 
-            lblRecordCount.Text = $"Showing 1 to {gv.Rows.Count} of {gv.Rows.Count} entries";
+                lblRecordCount.Text = msg;
+                
+            }
+        }
+
+        protected void products_filter(object sender, EventArgs e)
+        {
+            LoadProducts();
+        }
+        /// <summary>
+        /// Gets a list of projects with the filtered fields applied.
+        /// </summary>
+        /// <returns>List of filtered products.</returns>
+        protected IEnumerable<Product> GetProducts()
+        {
+            using (ProductsRepository productRepo = new ProductsRepository())
+            {
+                var filter = new ProductsRepository.Filter(txtSearch.Text, chkAvailableOnly.Checked);
+                var products = productRepo.GetAllWithFilter(filter);
+                return products;
+            }
         }
     }
 }

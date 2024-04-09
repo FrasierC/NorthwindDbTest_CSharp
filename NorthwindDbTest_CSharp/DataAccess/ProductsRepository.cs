@@ -13,10 +13,10 @@ namespace NorthwindDbTest_CSharp.DataAccess
         public struct Filter
         {
             // Parameter for searching for a product by Name.
-            public string NameSearch;
+            public string NameSearch { get; }
 
             // If true show only the products that are available. 
-            public bool ShowOnlyAvailable;
+            public bool ShowOnlyAvailable { get; }
 
             public Filter(string search = null, bool showOnlyAvailable = false)
             {

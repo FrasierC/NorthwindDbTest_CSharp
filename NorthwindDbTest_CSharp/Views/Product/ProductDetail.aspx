@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Product" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="NorthwindDbTest_CSharp.ProductDetail" %>
+﻿<%@ Page Title="Product" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductDetail.aspx.cs" Inherits="NorthwindDbTest_CSharp.Views.ProductDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -136,5 +136,57 @@
                     </div>
             </ItemTemplate>
         </asp:FormView>
+        <asp:UpdatePanel ID="upResults" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div class="col-12 mt-2">
+                    <div class="table-responsive">
+                        <asp:GridView ID="gvOrders" runat="server"
+                            AutoGenerateColumns="false"
+                            Width="100%"
+                            CellPadding="3"
+                            CssClass="table table-sm table-striped table-light"
+                            EmptyDataText="No orders available."
+                            OnPreRender="gvOrders_PreRender">
+                            <Columns>
+                                <asp:BoundField DataField="Id" HeaderText="Order ID" />
+                                <asp:BoundField DataField="CustomerName" HeaderText="Customer" />
+                                <asp:TemplateField HeaderText="Order Date">
+                                    <ItemTemplate>
+                                        <%# Eval("OrderDate") != null ? ((DateTime)Eval("OrderDate")).ToShortDateString() : "N/A" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Required Date">
+                                    <ItemTemplate>
+                                        <%# Eval("RequiredDate") != null ? ((DateTime)Eval("RequiredDate")).ToShortDateString() : "N/A" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Shipped Date">
+                                    <ItemTemplate>
+                                        <%# Eval("ShippedDate") != null ? ((DateTime)Eval("ShippedDate")).ToShortDateString() : "N/A" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Freight" HeaderText="Freight" />
+                                <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
+                                <asp:TemplateField HeaderText="Unit Price">
+                                    <ItemTemplate>
+                                        <%# $"${Eval("UnitPrice")}" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Discount">
+                                    <ItemTemplate>
+                                        <%# $"${Eval("Discount")}" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total">
+                                    <ItemTemplate>
+                                        <%# $"${Eval("Total")}" %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>

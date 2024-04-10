@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NorthwindDbTest_CSharp
+namespace NorthwindDbTest_CSharp.Views
 {
 
 

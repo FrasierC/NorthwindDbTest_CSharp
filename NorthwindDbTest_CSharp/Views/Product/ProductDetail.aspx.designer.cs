@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NorthwindDbTest_CSharp
+namespace NorthwindDbTest_CSharp.Views
 {
 
 
@@ -22,5 +22,23 @@ namespace NorthwindDbTest_CSharp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView productDetail;
+
+        /// <summary>
+        /// upResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upResults;
+
+        /// <summary>
+        /// gvOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvOrders;
     }
 }

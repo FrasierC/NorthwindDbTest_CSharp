@@ -127,8 +127,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\req1_1.png" />
-    <Content Include="ProductDetail.aspx" />
-    <Content Include="Products.aspx" />
+    <Content Include="Views\Product\ProductDetail.aspx" />
+    <Content Include="Views\Product\Products.aspx" />
     <Content Include="Scripts\bootstrap-icons\font\bootstrap-icons.css" />
     <Content Include="Scripts\bootstrap-icons\font\bootstrap-icons.min.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -204,8 +204,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DataAccess\BaseRepository.cs" />
     <Compile Include="DataAccess\CategoryRepository.cs" />
+    <Compile Include="DataAccess\CustomerRepository.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\NorthwindApiEndpoints.cs" />
+    <Compile Include="DataAccess\OrderRepository.cs" />
     <Compile Include="DataAccess\ProductsRepository.cs" />
     <Compile Include="DataAccess\SupplierRepository.cs" />
     <Compile Include="Default.aspx.cs">
@@ -220,24 +222,28 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
-    <Compile Include="ProductDetail.aspx.cs">
+    <Compile Include="Views\Product\ProductDetail.aspx.cs">
       <DependentUpon>ProductDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductDetail.aspx.designer.cs">
+    <Compile Include="Views\Product\ProductDetail.aspx.designer.cs">
       <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Products.aspx.cs">
+    <Compile Include="Views\Product\Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Products.aspx.designer.cs">
+    <Compile Include="Views\Product\Products.aspx.designer.cs">
       <DependentUpon>Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IViewModelService.cs" />
+    <Compile Include="Services\OrderViewModelService.cs" />
     <Compile Include="Services\ProductDetailViewModelService.cs" />
     <Compile Include="Services\ProductViewModelService.cs" />
     <Compile Include="Site.Master.cs">
@@ -255,6 +261,7 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Extensions\TaskFactoryExtensions.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">

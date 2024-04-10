@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NorthwindDbTest_CSharp
+namespace NorthwindDbTest_CSharp.Views
 {
     public partial class Products : System.Web.UI.Page
     {

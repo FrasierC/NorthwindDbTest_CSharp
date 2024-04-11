@@ -13,18 +13,15 @@
                 </nav>
                 <div class="col-12 mt-2">
                     <div class="d-flex">
-                        <div>
-                            <h1><%# Item.Name %></h1>
-                        </div>
-                        <div><i class="bi bi-circle-fill <%# Item.IsAvailable ? "text-success" : "text-danger" %>"></i></span></div>
+                        <h1><%# Item.Name %></h1>
                     </div>
                 </div>
                 <div class="col-12 mt-2">
                     <h4>Category Info</h4>
                     <div class="col-12 mt-2">
-                        <table class="table table-sm table-light">
+                        <table class="table table-sm table-light" border="1">
                             <tr>
-                                <td class="fw-bold">ID
+                                <td class="fw-bold" style="width: 20%">ID
                                 </td>
                                 <td>
                                     <%# Item.Category.Id %>
@@ -49,9 +46,9 @@
                     </div>
                     <div class="col-12 mt-2">
                         <h4>Product Info</h4>
-                        <table class="table table-sm table-light">
+                        <table class="table table-sm table-light" border="1">
                             <tr>
-                                <td class="fw-bold">ID
+                                <td class="fw-bold" style="width: 20%">ID
                                 </td>
                                 <td>
                                     <%# Item.Id %>
@@ -67,38 +64,45 @@
                             <tr>
                                 <td class="fw-bold">Unit Price
                                 </td>
-                                <td class="text-md-end">
+                                <td>
                                     <%# $"${Item.UnitPrice}" %>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Units In Stock
                                 </td>
-                                <td class="text-md-end">
+                                <td>
                                     <%# Item.UnitsInStock %>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Units on Order
                                 </td>
-                                <td class="text-md-end">
+                                <td>
                                     <%# Item.UnitsOnOrder %>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Reorder Level
                                 </td>
-                                <td class="text-md-end">
+                                <td>
                                     <%# Item.ReorderLevel %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Available
+                                </td>
+                                <td>
+                                    <%# Item.IsAvailable ? "Yes" : "No" %>
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <div class="col-12 mt-2">
                         <h4>Supplier Info</h4>
-                        <table class="table table-sm table-light">
+                        <table class="table table-sm table-light" border="1">
                             <tr>
-                                <td class="fw-bold">ID
+                                <td class="fw-bold" style="width: 20%">ID
                                 </td>
                                 <td>
                                     <%# Item.Supplier.Id %>
@@ -139,6 +143,7 @@
         <asp:UpdatePanel ID="upResults" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <div class="col-12 mt-2">
+                    <h4>Orders</h4>
                     <div class="table-responsive">
                         <asp:GridView ID="gvOrders" runat="server"
                             AutoGenerateColumns="false"
@@ -152,17 +157,17 @@
                                 <asp:BoundField DataField="CustomerName" HeaderText="Customer" />
                                 <asp:TemplateField HeaderText="Order Date">
                                     <ItemTemplate>
-                                        <%# Eval("OrderDate") != null ? ((DateTime)Eval("OrderDate")).ToShortDateString() : "N/A" %>
+                                        <%# Eval("OrderDate") != null ? ((DateTime)Eval("OrderDate")).ToString("MM/dd/yyyy") : "N/A" %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Required Date">
                                     <ItemTemplate>
-                                        <%# Eval("RequiredDate") != null ? ((DateTime)Eval("RequiredDate")).ToShortDateString() : "N/A" %>
+                                        <%# Eval("RequiredDate") != null ? ((DateTime)Eval("RequiredDate")).ToString("MM/dd/yyyy") : "N/A" %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Shipped Date">
                                     <ItemTemplate>
-                                        <%# Eval("ShippedDate") != null ? ((DateTime)Eval("ShippedDate")).ToShortDateString() : "N/A" %>
+                                        <%# Eval("ShippedDate") != null ? ((DateTime)Eval("ShippedDate")).ToString("MM/dd/yyyy"): "N/A" %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Freight" HeaderText="Freight" />

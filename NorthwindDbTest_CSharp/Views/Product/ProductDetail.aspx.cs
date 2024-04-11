@@ -62,7 +62,7 @@ namespace NorthwindDbTest_CSharp.Views
                if (orders != null)
                 {
                     var orderViewModelService = new OrderViewModelService(productId);
-                    gvOrders.DataSource = orderViewModelService.CreateViewModel(orders);
+                    gvOrders.DataSource = orderViewModelService.CreateViewModel(orders).OrderByDescending(o => o.OrderDate);
                     gvOrders.DataBind();
                 }
             }
